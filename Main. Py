@@ -1,0 +1,29 @@
+import os
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+
+# जार्विस का कोड इम्पोर्ट करें
+import speech
+
+class JarvisApp(App):
+    def build(self):
+        layout = BoxLayout(orientation='vertical', padding=20, spacing=10)
+        
+        self.label = Label(text="JARVIS AI", font_size=40, size_hint=(1, 0.2))
+        
+        self.start_button = Button(text="जार्विस को शुरू करें", font_size=20, size_hint=(1, 0.2))
+        self.start_button.bind(on_press=self.run_jarvis)
+        
+        layout.add_widget(self.label)
+        layout.add_widget(self.start_button)
+        
+        return layout
+
+    def run_jarvis(self, instance):
+        # जार्विस का मुख्य लूप चलाएं
+        os.system("python speech.py")
+
+if __name__ == '__main__':
+    JarvisApp().run()
